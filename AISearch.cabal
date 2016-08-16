@@ -1,0 +1,46 @@
+name:                AISearch
+version:             0.1.0.0
+synopsis:            Haskell toolkit of common AI search algorithms
+description:         Please see README.md
+homepage:            https://github.com/Druid-of-Luhn/AISearch#readme
+license:             GPL-3
+license-file:        LICENSE
+author:              Billy Brown
+maintainer:          druidofluhn@gmail.com
+copyright:           Billy Brown
+category:            AI
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     AStar, Manhattan, Problem, Tiles
+  build-depends:       base >= 4.8
+                     , array >= 0.5
+                     , containers >= 0.5
+  default-language:    Haskell2010
+  default-extensions:  MultiParamTypeClasses
+                     , FunctionalDependencies
+                     , TypeSynonymInstances
+
+executable AISearch-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , AISearch
+  default-language:    Haskell2010
+
+test-suite AISearch-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , AISearch
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/Druid-of-Luhn/AISearch
