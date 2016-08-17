@@ -39,6 +39,9 @@ chooseProblem "8tiles"
       print $ reverse $ Tiles.moves $ solve (mkTilesState (map read (words input)))
 chooseProblem "travel"
   = do
-      -- Convert the input to Ints, solve and print the result
-      print $ reverse $ Travel.moves $ solve mkTravelState
+      -- Read the problem from stdin
+      input <- getContents
+      -- Split the input on lines and print the result
+      let finalState = solve (mkTravelState (lines input))
+      print (cost finalState, reverse $ Travel.moves finalState)
 chooseProblem _ = putStrLn "Problem not implemented yet."
