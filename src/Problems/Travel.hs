@@ -20,6 +20,7 @@ module Travel
   ) where
 
 import qualified Data.Map.Strict as Map
+import BreadthFirst
 import DepthFirst
 import Problem
 
@@ -42,9 +43,9 @@ instance Problem TravelState String where
   result    = travel
   goal s    = location s == end s
   stepCost  = pathCost
-  addStates = DepthFirst.addStates
+  addStates = BreadthFirst.addStates
 
-instance DepthFirst TravelState String
+instance BreadthFirst TravelState String
 
 mkTravelState :: [String] -> TravelState
 mkTravelState (l:ls)

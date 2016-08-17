@@ -18,6 +18,7 @@ library
                      , src/Algorithms
                      , src/Problems
   exposed-modules:     AStar
+                     , BreadthFirst
                      , DepthFirst
                      , Manhattan
                      , Problem
