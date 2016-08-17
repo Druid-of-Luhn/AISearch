@@ -1,5 +1,5 @@
 name:                AISearch
-version:             0.1.1.0
+version:             0.1.2.0
 synopsis:            Haskell toolkit of common AI search algorithms
 description:         Please see README.md
 homepage:            https://github.com/Druid-of-Luhn/AISearch#readme
