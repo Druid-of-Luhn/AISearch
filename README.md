@@ -21,7 +21,7 @@ For example:
 
 ```
 stack build
-stack exec AISearch-exe -- 8tiles < data/8tiles.txt
+stack exec AISearch-exe -- 8tiles < examples/8tiles.txt
 ```
 
 ## License
