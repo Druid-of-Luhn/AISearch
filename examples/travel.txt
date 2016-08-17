@@ -1,0 +1,13 @@
+Arad Bucharest
+Arad Zerind 75 Sibiu 140 Timisoara 118
+Zerind Oradea 71 Arad 75
+Sibiu Fagaras 99 Rimnicu-Vilcea 80 Arad 140 Oradea 151
+Timisoara Lugoj 111 Arad 118
+Oradea Sibiu 151 Zerind 71
+Fagaras Bucharest 211 Sibiu 99
+Rimnicu-Vilcea Pitesti 97 Craiova 146 Sibiu 80
+Lugoj Mehadia 70 Timisoara 111
+Pitesti Bucharest 101 Craiova 138 Rimnicu-Vilcea 97
+Craiova Pitesti 138 Drobeta 120 Rimnicu-Vilcea 146
+Mehadia Drobeta 75 Lugoj 70
+Drobeta Craiova 120 Mehadia 75
