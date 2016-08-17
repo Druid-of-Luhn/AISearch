@@ -24,6 +24,8 @@ library
                      , Problem
                      , Tiles
                      , Travel
+                     , TravelBFS
+                     , TravelDFS
   build-depends:       base >= 4.8
                      , array >= 0.5
                      , containers >= 0.5

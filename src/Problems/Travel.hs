@@ -13,15 +13,9 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-module Travel
-  ( mkTravelState
-  , cost
-  , moves
-  ) where
+module Travel where
 
 import qualified Data.Map.Strict as Map
-import BreadthFirst
-import DepthFirst
 import Problem
 
 data TravelState = TravelState { location :: String
@@ -37,15 +31,6 @@ instance Eq TravelState where
 
 instance Ord TravelState where
   compare s1 s2 = compare (location s1) (location s2)
-
-instance Problem TravelState String where
-  actions   = genMoves
-  result    = travel
-  goal s    = location s == end s
-  stepCost  = pathCost
-  addStates = BreadthFirst.addStates
-
-instance BreadthFirst TravelState String
 
 mkTravelState :: [String] -> TravelState
 mkTravelState (l:ls)
@@ -77,7 +62,7 @@ genMoves s = case Map.lookup (location s) (graph s) of
 
 travel :: TravelState -> String -> TravelState
 travel s m = s { location = m
-               , cost = stepCost s m s
+               , cost = pathCost s m s
                , moves = m:(moves s)
                }
 

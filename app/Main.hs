@@ -22,6 +22,8 @@ import DepthFirst
 import Problem
 import Tiles
 import Travel
+import TravelBFS
+import TravelDFS
 
 main :: IO ()
 main = do
@@ -31,17 +33,29 @@ main = do
      else putStrLn "Please provide the problem name."
 
 chooseProblem :: String -> IO ()
+
 chooseProblem "8tiles"
   = do
       -- Read the problem from stdin
       input <- getContents
       -- Convert the input to Ints, solve and print the moves taken
-      print $ reverse $ Tiles.moves $ solve (mkTilesState (map read (words input)))
-chooseProblem "travel"
+      let solution = solve (mkTilesState (map read (words input)))
+      print $ reverse $ Tiles.moves $ solution
+
+chooseProblem "travel-bfs"
   = do
       -- Read the problem from stdin
       input <- getContents
       -- Split the input on lines and print the result
-      let finalState = solve (mkTravelState (lines input))
-      print (cost finalState, reverse $ Travel.moves finalState)
+      let solution = solveBFS (mkTravelState (lines input))
+      print (Travel.cost solution, reverse $ Travel.moves solution)
+
+chooseProblem "travel-dfs"
+  = do
+      -- Read the problem from stdin
+      input <- getContents
+      -- Split the input on lines and print the result
+      let solution = solveDFS (mkTravelState (lines input))
+      print (Travel.cost solution, reverse $ Travel.moves solution)
+
 chooseProblem _ = putStrLn "Problem not implemented yet."
