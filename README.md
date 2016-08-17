@@ -4,13 +4,14 @@ A Haskell toolkit of common AI search algorithms. A type class `Problem` is defi
 
 So far, the following algorithms have been implemented:
 
+- Breadth First Search
 - Depth First Search (DFS)
 - A\*
 
 Using existing algorithms, the following problems have been implemented:
 
-- Travel problem (get from point A to point B)
-- 8/15-tiles problem
+- Travel problem (get from point A to point B) (`travel-bfs`, `travel-dfs`)
+- 8/15-tiles problem (`8tiles`)
 
 ## Usage
 
