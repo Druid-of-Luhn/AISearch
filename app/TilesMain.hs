@@ -13,17 +13,17 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-module TravelBFS where
+module TilesMain where
 
-import BreadthFirst
+import AStar
 import Problem
-import Travel
+import Tiles
 
-instance Problem TravelState String where
-  actions   = genMoves
-  result    = travel
-  goal s    = location s == end s
-  stepCost  = pathCost
-  addStates = BreadthFirst.addStates
-
-instance BreadthFirst TravelState String
+tiles :: IO ()
+tiles
+  = do
+      -- Read the problem from stdin
+      input <- getContents
+      -- Convert the input to Ints, solve and print the moves taken
+      let solution = solve (mkTilesState (map read (words input)))
+      print $ reverse $ moves $ solution

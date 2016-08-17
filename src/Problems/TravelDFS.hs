@@ -27,6 +27,3 @@ instance Problem TravelState String where
   addStates = DepthFirst.addStates
 
 instance DepthFirst TravelState String
-
-solveDFS :: TravelState -> TravelState
-solveDFS = solve

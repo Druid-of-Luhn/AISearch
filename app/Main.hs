@@ -17,13 +17,9 @@ module Main where
 
 import System.Environment
 
-import AStar
-import DepthFirst
-import Problem
-import Tiles
-import Travel
-import TravelBFS
-import TravelDFS
+import TilesMain
+import TravelBFSMain
+import TravelDFSMain
 
 main :: IO ()
 main = do
@@ -33,29 +29,7 @@ main = do
      else putStrLn "Please provide the problem name."
 
 chooseProblem :: String -> IO ()
-
-chooseProblem "8tiles"
-  = do
-      -- Read the problem from stdin
-      input <- getContents
-      -- Convert the input to Ints, solve and print the moves taken
-      let solution = solve (mkTilesState (map read (words input)))
-      print $ reverse $ Tiles.moves $ solution
-
-chooseProblem "travel-bfs"
-  = do
-      -- Read the problem from stdin
-      input <- getContents
-      -- Split the input on lines and print the result
-      let solution = solveBFS (mkTravelState (lines input))
-      print (Travel.cost solution, reverse $ Travel.moves solution)
-
-chooseProblem "travel-dfs"
-  = do
-      -- Read the problem from stdin
-      input <- getContents
-      -- Split the input on lines and print the result
-      let solution = solveDFS (mkTravelState (lines input))
-      print (Travel.cost solution, reverse $ Travel.moves solution)
-
+chooseProblem "8tiles" = tiles
+chooseProblem "travel-bfs" = travelBFS
+chooseProblem "travel-dfs" = travelDFS
 chooseProblem _ = putStrLn "Problem not implemented yet."

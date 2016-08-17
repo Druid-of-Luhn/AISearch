@@ -13,17 +13,17 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-module TravelBFS where
+module TravelDFSMain where
 
-import BreadthFirst
+import DepthFirst
 import Problem
 import Travel
+import TravelDFS
 
-instance Problem TravelState String where
-  actions   = genMoves
-  result    = travel
-  goal s    = location s == end s
-  stepCost  = pathCost
-  addStates = BreadthFirst.addStates
-
-instance BreadthFirst TravelState String
+travelDFS :: IO ()
+travelDFS
+  = do -- Read the problem from stdin
+       input <- getContents
+       -- Split the input on lines and print the result
+       let solution = solve (mkTravelState (lines input))
+       print (cost solution, reverse $ moves solution)
