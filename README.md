@@ -4,7 +4,7 @@ A Haskell toolkit of common AI search algorithms. A type class `Problem` is defi
 
 So far, the following algorithms have been implemented:
 
-- Breadth First Search
+- Breadth First Search (BFS)
 - Depth First Search (DFS)
 - A\*
 
