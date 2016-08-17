@@ -1,3 +1,5 @@
+-- Copyright © Billy Brown 2016
+--
 -- This file is part of AISearch.
 --
 -- AISearch is free software: you can redistribute it and/or modify
