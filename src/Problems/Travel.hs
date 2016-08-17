@@ -13,7 +13,11 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-module Travel where
+module Travel
+  ( mkTravelState
+  , cost
+  , moves
+  ) where
 
 import qualified Data.Map.Strict as Map
 import DepthFirst
