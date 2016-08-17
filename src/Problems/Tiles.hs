@@ -29,11 +29,11 @@ type Move = Tile
 type Grid = [Tile]
 
 data TilesState = TilesState { grid  :: Grid
-                   , score :: Int
-                   , cost  :: Int
-                   , moves :: [Move]
-                   }
-           deriving (Show)
+                             , score :: Int
+                             , cost  :: Int
+                             , moves :: [Move]
+                             }
+                deriving (Show)
 
 -- Eq and Ord are needed for use with a Set
 instance Eq TilesState where

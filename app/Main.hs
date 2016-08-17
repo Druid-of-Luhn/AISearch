@@ -18,8 +18,10 @@ module Main where
 import System.Environment
 
 import AStar
+import DepthFirst
 import Problem
 import Tiles
+import Travel
 
 main :: IO ()
 main = do
@@ -34,5 +36,9 @@ chooseProblem "8tiles"
       -- Read the problem from stdin
       input <- getContents
       -- Convert the input to Ints, solve and print the moves taken
-      print $ reverse $ moves $ solve (mkTilesState (map read (words input)))
+      print $ reverse $ Tiles.moves $ solve (mkTilesState (map read (words input)))
+chooseProblem "travel"
+  = do
+      -- Convert the input to Ints, solve and print the result
+      print $ reverse $ Travel.moves $ solve mkTravelState
 chooseProblem _ = putStrLn "Problem not implemented yet."

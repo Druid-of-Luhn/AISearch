@@ -15,13 +15,21 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     AStar, Manhattan, Problem, Tiles
+                     , src/Algorithms
+                     , src/Problems
+  exposed-modules:     AStar
+                     , DepthFirst
+                     , Manhattan
+                     , Problem
+                     , Tiles
+                     , Travel
   build-depends:       base >= 4.8
                      , array >= 0.5
                      , containers >= 0.5
   default-language:    Haskell2010
-  default-extensions:  MultiParamTypeClasses
+  default-extensions:  FlexibleInstances
                      , FunctionalDependencies
+                     , MultiParamTypeClasses
                      , TypeSynonymInstances
 
 executable AISearch-exe
