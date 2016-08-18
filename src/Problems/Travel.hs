@@ -15,6 +15,8 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
+{-# OPTIONS_HADDOCK hide #-}
+
 module Travel where
 
 import qualified Data.Map.Strict as Map
