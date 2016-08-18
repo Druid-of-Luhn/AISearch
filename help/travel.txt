@@ -1,0 +1,15 @@
+Problem:    Travel
+Algorithms: - Breadth-First Search
+            - Depth-First Search
+Input:      first line:
+              <start> <end>
+            following lines:
+              <start> [<end> <cost>]+
+            where <start> and <end> are
+            names containing no whitespace,
+            and <cost> is an integer.
+Output:     a tuple of the route cost and the
+            locations in order of visit.
+Goal:       reach the end location from the
+            first location. Optionally search
+            for the shortest path.

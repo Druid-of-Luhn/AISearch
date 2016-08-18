@@ -18,6 +18,7 @@
 module Main where
 
 import System.Environment
+import System.IO.Error
 
 import TilesMain
 import TravelBFSMain
@@ -38,4 +39,22 @@ chooseProblem "travel-dfs" = travelDFS
 chooseProblem p = putStrLn $ "Problem '" ++ p ++ "' not implemented."
 
 help :: String -> IO ()
-help _ = putStrLn "Help not implemented yet."
+help filename
+  | filename == "8tiles"
+    = showHelpFile filename
+  | elem filename ["travel-bfs", "travel-dfs", "travel"]
+    = showHelpFile "travel"
+  | otherwise
+    = putStrLn $ "Help not available for '" ++ filename ++ "'."
+
+showHelpFile :: String -> IO ()
+showHelpFile filename
+  = catchIOError
+  -- Read the help file's contents
+  (do contents <- readFile $ "help/" ++ filename ++ ".txt"
+      putStr contents)
+  -- If the file does not exist, report it
+  (\ e -> if isDoesNotExistError e 
+          then putStrLn $ "Help not available for '" ++ filename ++ "'."
+          -- Otherwise raise the error again
+          else ioError e)

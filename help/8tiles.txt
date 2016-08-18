@@ -1,0 +1,10 @@
+Problem:    8/15 tiles
+Algorithms: A*
+Input:      unique numbers in [0;n[, where
+            sqrt(n) is a natural number,
+            separated by whitespace.
+Output:     the list of tile indices that the
+            0 tile should be moved into to
+            reach the goal state.
+Goal:       reach a state with the numbers in
+            growing order from 0 to n - 1.
