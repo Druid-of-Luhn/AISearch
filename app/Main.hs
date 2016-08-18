@@ -26,12 +26,16 @@ import TravelDFSMain
 main :: IO ()
 main = do
   args <- getArgs
-  if length args > 0
-     then chooseProblem (head args)
-     else putStrLn "Please provide the problem name."
+  case args of
+       [arg]           -> chooseProblem arg
+       [arg, "--help"] -> help arg
+       _               -> putStrLn "Usage: stack exec AISearch-exe -- <problem> [--help]"
 
 chooseProblem :: String -> IO ()
 chooseProblem "8tiles" = tiles
 chooseProblem "travel-bfs" = travelBFS
 chooseProblem "travel-dfs" = travelDFS
-chooseProblem _ = putStrLn "Problem not implemented yet."
+chooseProblem p = putStrLn $ "Problem '" ++ p ++ "' not implemented."
+
+help :: String -> IO ()
+help _ = putStrLn "Help not implemented yet."
