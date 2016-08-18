@@ -24,6 +24,10 @@ stack build
 stack exec AISearch-exe -- 8tiles < examples/8tiles.txt
 ```
 
+## Help
+
+Help files for the different problems that have been implemented are available in the "help/" directory, and are accessible by passing the `--help` flag after the problem name: `stack exec AISearch-exe -- travel-bfs --help`.
+
 ## License
 
 Copyright © Billy Brown 2016
