@@ -49,9 +49,9 @@ executable AISearch-exe
 test-suite AISearch-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
-  main-is:             Spec.hs
-  other-modules:       TestRunner
-                     , ManhattanTest
+                     , src
+  main-is:             Main.hs
+  other-modules:       Manhattan.Tests
   build-depends:       base
                      , AISearch
                      , tasty >= 0.11

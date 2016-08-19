@@ -15,7 +15,7 @@
 
 import Test.Tasty
 
-import ManhattanTest
+import qualified Manhattan.Tests as Manhattan
 
 main :: IO ()
-main = defaultMain ManhattanTest.tests
+main = defaultMain Manhattan.tests
