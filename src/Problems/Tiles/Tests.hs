@@ -17,29 +17,74 @@ module Problems.Tiles.Tests
   ( tests
   ) where
 
+import Data.List (sort)
 import Test.Tasty
 import Test.Tasty.HUnit
 
+import Algorithms.AStar
 import Problems.Tiles.Internal
+
+goalState :: TilesState
+goalState = mkTilesState [0..8]
+
+nonGoalState :: TilesState
+nonGoalState = mkTilesState (reverse [0..8])
 
 tests :: TestTree
 tests = testGroup "Problems.Tiles Tests"
   [ mkTilesStateInitial
   , tilesComplete
+  , heuristicTest
+  , genMovesTest
   ]
 
 mkTilesStateInitial :: TestTree
 mkTilesStateInitial = testGroup "mkTilesState initial value"
   [ testCase "New state has cost 0" $
-    cost (mkTilesState $ reverse [0..8]) @?= 0
+    cost nonGoalState @?= 0
   , testCase "New state has no move history" $
-    moves (mkTilesState [0..8]) @?= []
+    moves nonGoalState @?= []
   ]
 
 tilesComplete :: TestTree
 tilesComplete = testGroup "TilesState complete or not"
   [ testCase "Goal state is complete" $
-    complete (mkTilesState [0..8]) @?= True
+    complete goalState @?= True
   , testCase "Non-goal state is not complete" $
-    complete (mkTilesState $ reverse [0..8]) @?= False
+    complete nonGoalState @?= False
+  ]
+
+heuristicTest :: TestTree
+heuristicTest = testGroup "Heuristic"
+  [ testCase "Goal state with cost = 0 has score = 0" $
+    heuristic goalState @?= 0
+  , testCase "Goal state with cost > 0 has score = cost" $
+    heuristic (goalState { cost = 5 }) @?= 5
+  , testCase "Score - cost = sum of manhattan distances" $
+    heuristic (mkTilesState
+                [ 0, 2, 1
+                , 3, 8, 4
+                , 5, 7, 6 ])
+              @?= 0 + 1 + 1
+                + 0 + 2 + 1
+                + 3 + 0 + 2
+  ]
+
+genMovesTest :: TestTree
+genMovesTest = testGroup "Generating moves"
+  [ testCase "Move in all four directions" $
+    sort (genMoves (mkTilesState [ 1, 2, 3
+                                 , 4, 0, 5
+                                 , 6, 7, 8 ]))
+    @?= [ 1, 3, 5, 7 ]
+  , testCase "Move in three directions" $
+    sort (genMoves (mkTilesState [ 1, 0, 2
+                                 , 3, 4, 5
+                                 , 6, 7, 8 ]))
+    @?= [ 0, 2, 4 ]
+  , testCase "Move in two directions" $
+    sort (genMoves (mkTilesState [ 0, 1, 2
+                                 , 3, 4, 5
+                                 , 6, 7, 8 ]))
+    @?= [ 1, 3 ]
   ]

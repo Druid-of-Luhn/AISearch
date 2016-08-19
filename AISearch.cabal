@@ -58,6 +58,8 @@ test-suite AISearch-test
                      , Problem
                      , Problems.Tiles.Internal
                      , Problems.Tiles.Tests
+                     , Swap
+                     , Swap.Tests
   build-depends:       base
                      , array
                      , containers
