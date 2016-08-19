@@ -16,10 +16,13 @@
 import Test.Tasty
 
 import qualified Manhattan.Tests as Manhattan
+import qualified Swap.Tests as Swap
 import qualified Problems.Tiles.Tests as Tiles
 
 main :: IO ()
 main = defaultMain $
   testGroup "Unit tests"
   [ Manhattan.tests
-  , Tiles.tests ]
+  , Swap.tests
+  , Tiles.tests
+  ]

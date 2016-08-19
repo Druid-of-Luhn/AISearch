@@ -24,6 +24,7 @@ library
                      , Problems.Travel
                      , Problems.Travel.BFS
                      , Problems.Travel.DFS
+                     , Swap
   other-modules:       Problems.Tiles.Internal
                      , Problems.Travel.Internal
   build-depends:       base >= 4.8

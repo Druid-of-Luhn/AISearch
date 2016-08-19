@@ -24,6 +24,7 @@ import Data.Array
 import Data.List
 import Manhattan
 import Problem
+import Swap
 
 type Tile = Int
 type Move = Tile
@@ -94,7 +95,7 @@ genMoves' grid index size
 makeMove :: TilesState -> Move -> TilesState
 makeMove state@TilesState { grid = g } m
   = case elemIndex 0 g of
-         Just index -> let newState = state { grid = swap index m g, 
+         Just index -> let newState = state { grid = swap g index m, 
                                               cost = (cost state) + 1,
                                               moves = m : (moves state) }
                            in newState { score = heuristic newState }
@@ -107,7 +108,3 @@ sorted (x:y:xs) = x < y && sorted (y:xs)
 
 size :: Grid -> Int
 size = floor . sqrt . fromIntegral . length
-
-swap :: Int -> Int -> [a] -> [a]
-swap x y as = let asArray = listArray (0, length as - 1) as
-                  in elems $ asArray // [(x, asArray!y), (y, asArray!x)]
