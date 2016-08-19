@@ -17,17 +17,17 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module TravelDFS where
+module Problems.Travel.DFS where
 
-import DepthFirst
+import Algorithms.DepthFirst
 import Problem
-import TravelInternal
+import Problems.Travel.Internal
 
 instance Problem TravelState String where
   actions   = genMoves
   result    = travel
   goal s    = location s == end s
   stepCost  = pathCost
-  addStates = DepthFirst.addStates
+  addStates = Algorithms.DepthFirst.addStates
 
 instance DepthFirst TravelState String

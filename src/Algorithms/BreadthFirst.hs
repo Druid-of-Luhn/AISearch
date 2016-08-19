@@ -16,7 +16,7 @@
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
 {-|
-Module      : BreadthFirst
+Module      : Algorithms.BreadthFirst
 Description : An implementation of the 'addStates' function for breadth-first search.
 Copyright   : Copyright © Billy Brown 2016
 License     : GPL-3
@@ -24,7 +24,7 @@ Maintainer  : druidofluhn@gmail.com
 
 Breadth-first search adds newly expanded states to the back of the frontier, making it visit a whole layer of the search space before moving on to the next. This type class extends the 'Problem' class with an implementation of 'addStates'.
 -}
-module BreadthFirst where
+module Algorithms.BreadthFirst where
 
 import Problem
 

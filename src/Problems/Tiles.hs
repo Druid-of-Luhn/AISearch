@@ -17,9 +17,9 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module Tiles
+module Problems.Tiles
   ( mkTilesState
   , moves
   ) where
 
-import TilesInternal
+import Problems.Tiles.Internal

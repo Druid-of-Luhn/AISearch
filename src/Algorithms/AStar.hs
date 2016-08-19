@@ -16,7 +16,7 @@
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
 {-|
-Module      : AStar
+Module      : Algorithms.AStar
 Description : Functions for A* search and an implementation of the 'addStates' function.
 Copyright   : Copyright © Billy Brown 2016
 License     : GPL-3
@@ -24,7 +24,7 @@ Maintainer  : druidofluhn@gmail.com
 
 The A* search algorithm uses an admissible heuristic to order states by best first, taking the cost so far into account in order to prevent endless loops. It finds the cheapest path to a solution in an often small amount of steps.
 -}
-module AStar where
+module Algorithms.AStar where
 
 import Data.List
 import Problem

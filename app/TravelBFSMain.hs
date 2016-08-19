@@ -17,10 +17,10 @@
 
 module TravelBFSMain where
 
-import DepthFirst
+import Algorithms.BreadthFirst
 import Problem
-import Travel
-import TravelBFS
+import Problems.Travel
+import Problems.Travel.BFS
 
 travelBFS :: IO ()
 travelBFS

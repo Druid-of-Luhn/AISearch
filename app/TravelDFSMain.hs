@@ -17,10 +17,10 @@
 
 module TravelDFSMain where
 
-import DepthFirst
+import Algorithms.DepthFirst
 import Problem
-import Travel
-import TravelDFS
+import Problems.Travel
+import Problems.Travel.DFS
 
 travelDFS :: IO ()
 travelDFS

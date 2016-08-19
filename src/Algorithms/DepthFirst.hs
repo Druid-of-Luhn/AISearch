@@ -16,7 +16,7 @@
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
 {-|
-Module      : DepthFirst
+Module      : Algorithms.DepthFirst
 Description : An implementation of the 'addStates' function for depth-first search.
 Copyright   : Copyright © Billy Brown 2016
 License     : GPL-3
@@ -24,7 +24,7 @@ Maintainer  : druidofluhn@gmail.com
 
 Depth-first search adds newly expanded states to the front of the frontier, making it visit a whole branch in the search space before moving on to the next. This type class extends the 'Problem' class with an implementation of 'addStates'.
 -}
-module DepthFirst where
+module Algorithms.DepthFirst where
 
 import Problem
 

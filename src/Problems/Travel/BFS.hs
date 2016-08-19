@@ -17,17 +17,17 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module TravelBFS where
+module Problems.Travel.BFS where
 
-import BreadthFirst
+import Algorithms.BreadthFirst
 import Problem
-import TravelInternal
+import Problems.Travel.Internal
 
 instance Problem TravelState String where
   actions   = genMoves
   result    = travel
   goal s    = location s == end s
   stepCost  = pathCost
-  addStates = BreadthFirst.addStates
+  addStates = Algorithms.BreadthFirst.addStates
 
 instance BreadthFirst TravelState String

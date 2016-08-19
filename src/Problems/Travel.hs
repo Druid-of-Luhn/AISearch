@@ -17,10 +17,10 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module Travel
+module Problems.Travel
   ( mkTravelState
   , moves
   , cost
   ) where
 
-import TravelInternal
+import Problems.Travel.Internal

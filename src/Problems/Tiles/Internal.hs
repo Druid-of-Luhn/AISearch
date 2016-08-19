@@ -17,9 +17,9 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module TilesInternal where
+module Problems.Tiles.Internal where
 
-import AStar
+import Algorithms.AStar
 import Data.Array
 import Data.List
 import Manhattan
@@ -49,7 +49,7 @@ instance Problem TilesState Move where
   result    = makeMove
   goal      = complete
   stepCost  = \_ _ s -> cost s
-  addStates = AStar.addStates
+  addStates = Algorithms.AStar.addStates
 
 instance AStar TilesState Move where
   heuristic TilesState { grid = g, cost = c }

@@ -17,7 +17,7 @@
 
 {-# OPTIONS_HADDOCK hide #-}
 
-module TravelInternal where
+module Problems.Travel.Internal where
 
 import qualified Data.Map.Strict as Map
 import Problem

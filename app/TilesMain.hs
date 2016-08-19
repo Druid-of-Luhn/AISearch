@@ -17,9 +17,9 @@
 
 module TilesMain where
 
-import AStar
+import Algorithms.AStar
 import Problem
-import Tiles
+import Problems.Tiles
 
 tiles :: IO ()
 tiles
