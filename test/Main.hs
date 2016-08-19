@@ -16,6 +16,10 @@
 import Test.Tasty
 
 import qualified Manhattan.Tests as Manhattan
+import qualified Problems.Tiles.Tests as Tiles
 
 main :: IO ()
-main = defaultMain Manhattan.tests
+main = defaultMain $
+  testGroup "Unit tests"
+  [ Manhattan.tests
+  , Tiles.tests ]
