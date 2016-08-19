@@ -13,8 +13,13 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-import ManhattanTest
+module TestRunner where
 
-main :: IO ()
-main = do
-  ManhattanTest.test
+runTest :: (Eq a, Show a) => String -> a -> a -> IO ()
+runTest testName received expected
+  = if received == expected
+       then putStrLn $ "[passed] " ++ testName
+       else do
+            putStrLn $ "[failed] " ++ testName
+            putStrLn $ "         received: " ++ (show received)
+            putStrLn $ "         expected: " ++ (show expected)
