@@ -29,8 +29,8 @@ module Manhattan where
 -- | 'ManhattanBlock' defines the function 'manhattan' for calculating the distance between two points.
 class ManhattanBlock a where
   -- | Calculate the manhattan block distance between two points.
-  manhattan :: a   -- ^ x
-            -> a   -- ^ y
+  manhattan :: a   -- ^ position
+            -> a   -- ^ target
             -> Int -- ^ Grid width for 1d array indexing.
             -> Int -- ^ Manhattan block distance.
 
