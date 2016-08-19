@@ -13,42 +13,48 @@
 -- You should have received a copy of the GNU General Public License
 -- along with AISearch.  If not, see <http://www.gnu.org/licenses/>.
 
-module ManhattanTest where
+module ManhattanTest
+  ( tests
+  ) where
+
+import Test.Tasty
+import Test.Tasty.HUnit
 
 import Manhattan
-import TestRunner
 
-test :: IO ()
-test = do putStrLn ""
-          singleDimensionTestZero
-          singleDimensionTestMax
-          doubleDimensionTestZero
-          doubleDimensionTestMax
+tests :: TestTree
+tests = testGroup "Manhattan Tests"
+  [ testGroup "Single dimension array"
+    [ singleDimensionZero
+    , singleDimensionMax ]
+  , testGroup "Double dimension array"
+    [ doubleDimensionZero
+    , doubleDimensionMax ] ]
 
-singleDimensionTestZero
-  = runTest "Manhattan.singleDimensionTestZero"
-            (manhattan (2 :: Int)
-                       (2 :: Int)
-                       3)
-            0
+singleDimensionZero
+  = let index = 2 :: Int
+        target = index
+        width = 3
+        in testCase "Distance is zero" $
+           manhattan index target width @?= 0
 
-singleDimensionTestMax
-  = runTest "Manhattan.singleDimensionTestMax"
-            (manhattan (0 :: Int)
-                       (8 :: Int)
-                       3)
-            4
+singleDimensionMax
+  = let index = 8 :: Int
+        target = 0 :: Int
+        width = 3
+        in testCase "Distance is maximal" $
+           manhattan index target width @?= 4
 
-doubleDimensionTestZero
-  = runTest "Manhattan.doubleDimensionTestZero"
-            (manhattan ((1, 1) :: (Int, Int))
-                       ((1, 1) :: (Int, Int))
-                       3)
-            0
+doubleDimensionZero
+  = let index = (1, 1) :: (Int, Int)
+        target = index
+        width = 3
+        in testCase "Distance is zero" $
+           manhattan index target width @?= 0
 
-doubleDimensionTestMax
-  = runTest "Manhattan.doubleDimensionTestMax"
-            (manhattan ((0, 0) :: (Int, Int))
-                       ((2, 2) :: (Int, Int))
-                       3)
-            4
+doubleDimensionMax
+  = let index = (2, 2) :: (Int, Int)
+        target = (0, 0) :: (Int, Int)
+        width = 3
+        in testCase "Distance is maximal" $
+           manhattan index target width @?= 4
