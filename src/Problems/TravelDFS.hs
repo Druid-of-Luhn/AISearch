@@ -21,7 +21,7 @@ module TravelDFS where
 
 import DepthFirst
 import Problem
-import Travel
+import TravelInternal
 
 instance Problem TravelState String where
   actions   = genMoves

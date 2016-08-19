@@ -21,7 +21,7 @@ module TravelBFS where
 
 import BreadthFirst
 import Problem
-import Travel
+import TravelInternal
 
 instance Problem TravelState String where
   actions   = genMoves

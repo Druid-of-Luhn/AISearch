@@ -23,7 +23,9 @@ library
                      , Manhattan
                      , Problem
                      , Tiles
+                     , TilesInternal
                      , Travel
+                     , TravelInternal
                      , TravelBFS
                      , TravelDFS
   build-depends:       base >= 4.8
