@@ -22,6 +22,7 @@ library
                      , Problem
                      , Problems.Tiles
                      , Problems.Travel
+                     , Problems.Travel.AStar
                      , Problems.Travel.BFS
                      , Problems.Travel.DFS
                      , Swap

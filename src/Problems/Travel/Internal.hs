@@ -66,7 +66,7 @@ genMoves s = case Map.lookup (location s) (graph s) of
 
 travel :: TravelState -> String -> TravelState
 travel s m = s { location = m
-               , cost = pathCost s m s
+               , cost = cost s + pathCost s m s
                , moves = m:(moves s)
                }
 

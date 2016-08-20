@@ -21,6 +21,7 @@ import System.Environment
 import System.IO.Error
 
 import TilesMain
+import TravelAStarMain
 import TravelBFSMain
 import TravelDFSMain
 
@@ -34,6 +35,7 @@ main = do
 
 chooseProblem :: String -> IO ()
 chooseProblem "8tiles" = tiles
+chooseProblem "travel-A*" = travelAStar
 chooseProblem "travel-bfs" = travelBFS
 chooseProblem "travel-dfs" = travelDFS
 chooseProblem p = putStrLn $ "Problem '" ++ p ++ "' not implemented."
@@ -42,7 +44,7 @@ help :: String -> IO ()
 help filename
   | filename == "8tiles"
     = showHelpFile filename
-  | elem filename ["travel-bfs", "travel-dfs", "travel"]
+  | elem filename ["travel-bfs", "travel-dfs", "travel-A*", "travel"]
     = showHelpFile "travel"
   | otherwise
     = putStrLn $ "Help not available for '" ++ filename ++ "'."
