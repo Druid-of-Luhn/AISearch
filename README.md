@@ -10,7 +10,7 @@ So far, the following algorithms have been implemented:
 
 Using existing algorithms, the following problems have been implemented:
 
-- Travel problem (get from point A to point B) (`travel-bfs`, `travel-dfs`)
+- Travel problem (get from point A to point B) (`travel-A*`, `travel-bfs`, `travel-dfs`)
 - 8/15-tiles problem (`8tiles`)
 
 ## Usage

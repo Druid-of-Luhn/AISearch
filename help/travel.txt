@@ -1,5 +1,6 @@
 Problem:    Travel
-Algorithms: - Breadth-First Search
+Algorithms: - A*
+            - Breadth-First Search
             - Depth-First Search
 Input:      first line:
               <start> <end>
