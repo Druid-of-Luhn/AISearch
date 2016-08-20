@@ -36,6 +36,7 @@ tests = testGroup "Problems.Tiles Tests"
   , tilesComplete
   , heuristicTest
   , genMovesTest
+  , moveMade
   ]
 
 mkTilesStateInitial :: TestTree
@@ -88,3 +89,22 @@ genMovesTest = testGroup "Generating moves"
                                  , 6, 7, 8 ]))
     @?= [ 1, 3 ]
   ]
+
+moveMade :: TestTree
+moveMade = let original = mkTilesState [ 1, 2, 3
+                                       , 4, 0, 5
+                                       , 6, 7, 8 ]
+               next = makeMove original 1
+               in testCaseSteps "A move is made" $
+                  \step -> do
+                    step "The move is applied to the grid"
+                    grid next @?= [ 1, 0, 3
+                                  , 4, 2, 5
+                                  , 6, 7, 8 ]
+                    step "The new score is calculated"
+                    score next @?= 1 + 1 + 3
+                                 + 1 + 2 + 0
+                                 + 0 + 0 + 0
+                                 + (cost next)
+                    step "The cost is incremented by one"
+                    cost next @?= cost original + 1
