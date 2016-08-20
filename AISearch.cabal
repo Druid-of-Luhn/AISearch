@@ -29,7 +29,6 @@ library
   other-modules:       Problems.Tiles.Internal
                      , Problems.Travel.Internal
   build-depends:       base >= 4.8
-                     , array >= 0.5
                      , containers >= 0.5
   default-language:    Haskell2010
   default-extensions:  FlexibleInstances
@@ -62,7 +61,6 @@ test-suite AISearch-test
                      , Swap
                      , Swap.Tests
   build-depends:       base
-                     , array
                      , containers
                      , AISearch
                      , tasty >= 0.11

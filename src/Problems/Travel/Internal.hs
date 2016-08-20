@@ -50,7 +50,7 @@ mkTravelGraph ls = mkTravelGraph' ls Map.empty
         -- Add the current line to the map, then recurse on the rest
         mkTravelGraph' (l:ls) m = mkTravelGraph' ls (addLine (words l) m)
 
-        -- The key is the first entry, the value is an array of tuples of the rest
+        -- The key is the first entry, the value is a list of tuples of the rest
         addLine (w:ws) m = Map.insert w (zip (takeOdd ws) (map read $ takeEven ws)) m
         -- Take the odd-indexed values
         takeOdd [] = []

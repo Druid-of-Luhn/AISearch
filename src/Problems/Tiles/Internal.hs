@@ -20,7 +20,6 @@
 module Problems.Tiles.Internal where
 
 import Algorithms.AStar
-import Data.Array
 import Data.List
 import Manhattan
 import Problem
