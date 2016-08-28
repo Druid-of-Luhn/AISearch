@@ -19,15 +19,16 @@
 
 module Problems.Tiles.Internal where
 
+import qualified Data.Vector as V
+
 import Algorithms.AStar
-import Data.List
 import Manhattan
 import Problem
 import Swap
 
 type Tile = Int
 type Move = Tile
-type Grid = [Tile]
+type Grid = V.Vector Tile
 
 data TilesState = TilesState { grid  :: Grid
                              , score :: Int
@@ -53,10 +54,10 @@ instance Problem TilesState Move where
 
 instance AStar TilesState Move where
   heuristic TilesState { grid = g, cost = c }
-    = let distance t = case elemIndex t g of
+    = let distance t = case V.elemIndex t g of
                             Just index -> manhattan index t (size g)
                             Nothing    -> 0
-          in sum (map distance g) + c
+          in V.sum (V.map distance g) + c
   scoreCompare s1 s2 = compare (score s1) (score s2)
 
 mkTilesState :: Grid -> TilesState
@@ -69,12 +70,12 @@ complete = sorted . grid
 -- Generate a list of possible moves for the given state
 genMoves :: TilesState -> [Move]
 genMoves TilesState { grid = g }
-  = case elemIndex 0 g of
-         Just index -> genMoves' g index (size g)
+  = case V.elemIndex 0 g of
+         Just index -> genMoves' index (size g)
          Nothing    -> []
 
-genMoves' :: Grid -> Int -> Int -> [Move]
-genMoves' grid index size
+genMoves' :: Int -> Int -> [Move]
+genMoves' index size
   -- The 0 is on the left side
   | index `mod` size == 0
     = filter inBounds [ north, east, south ]
@@ -93,17 +94,21 @@ genMoves' grid index size
 -- Perform the given move, returning a new fully updated state
 makeMove :: TilesState -> Move -> TilesState
 makeMove state@TilesState { grid = g } m
-  = case elemIndex 0 g of
-         Just index -> let newState = state { grid = swap g index m, 
+  = case V.elemIndex 0 g of
+         Just index -> let newState = state { grid = swapV g index m, 
                                               cost = (cost state) + 1,
                                               moves = m : (moves state) }
                            in newState { score = heuristic newState }
          Nothing    -> state
 
-sorted :: Ord a => [a] -> Bool
-sorted [ ] = True
-sorted [x] = True
-sorted (x:y:xs) = x < y && sorted (y:xs)
+sorted :: Ord a => V.Vector a -> Bool
+sorted v | V.null v = True
+         | V.null $ V.tail v = True
+         | otherwise
+           = and $ V.map (\(x, y) -> x <= y) $ V.zip v (V.tail v)
 
 size :: Grid -> Int
-size = floor . sqrt . fromIntegral . length
+size = floor . sqrt . fromIntegral . V.length
+
+swapV :: V.Vector a -> Int -> Int -> V.Vector a
+swapV v x y = v V.// [(x, v V.! y), (y, v V.! x)]

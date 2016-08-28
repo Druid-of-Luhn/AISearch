@@ -17,6 +17,8 @@
 
 module TilesMain where
 
+import qualified Data.Vector as V
+
 import Algorithms.AStar
 import Problem
 import Problems.Tiles
@@ -27,5 +29,5 @@ tiles
       -- Read the problem from stdin
       input <- getContents
       -- Convert the input to Ints, solve and print the moves taken
-      let solution = solve (mkTilesState (map read (words input)))
+      let solution = solve (mkTilesState $ V.fromList (map read (words input)))
       print $ reverse $ moves $ solution
